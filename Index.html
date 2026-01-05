@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR04 ENT | Official Portal</title>
+    <style>
+        :root {
+            --primary-blue: #002e5b;
+            --accent-gold: #f3a63b;
+            --success-green: #0d9488;
+            --light-bg: #f1f5f9;
+        }
+
+        body { background-color: var(--light-bg); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: #1e293b; }
+        
+        .header { background-color: var(--primary-blue); color: white; padding: 25px 15px; text-align: center; border-bottom: 4px solid var(--accent-gold); }
+        .header h1 { margin: 0; font-size: 26px; font-style: italic; letter-spacing: 1px; }
+        .header p { margin: 8px 0 0; font-size: 10px; color: var(--accent-gold); font-weight: bold; text-transform: uppercase; }
+
+        .tab-container { display: flex; background: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .tab-btn { flex: 1; padding: 15px 5px; border: none; background: none; font-weight: 800; color: #64748b; cursor: pointer; border-bottom: 4px solid transparent; font-size: 10px; text-transform: uppercase; }
+        .tab-btn.active { color: var(--primary-blue); border-bottom-color: var(--accent-gold); }
+
+        .content-section { display: none; padding: 15px; }
+        .content-section.active { display: block; }
+
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        
+        /* Service Card Styles */
+        .pkg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .pkg-title { color: var(--primary-blue); margin: 0; font-size: 18px; }
+        .pkg-price { color: var(--accent-gold); font-weight: 900; font-size: 20px; }
+        .pkg-list { padding-left: 0; list-style: none; font-size: 13px; line-height: 1.8; }
+        .pkg-list li::before { content: "✓"; color: var(--success-green); margin-right: 8px; font-weight: bold; }
+
+        /* Toggles */
+        .toggle-box { background: var(--primary-blue); color: white; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+        .toggle-header { padding: 15px; cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; }
+        .toggle-content { background: white; color: #333; padding: 15px; display: none; border: 1px solid var(--primary-blue); }
+
+        /* Form Elements */
+        label { font-size: 11px; font-weight: 800; color: #64748b; display: block; margin-top: 12px; text-transform: uppercase; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1.5px solid #cbd5e1; box-sizing: border-box; }
+        .btn-green { background: var(--success-green); color: white; border: none; width: 100%; padding: 14px; border-radius: 8px; font-weight: 800; margin-top: 15px; cursor: pointer; text-transform: uppercase; }
+
+        .contact-box { border-left: 4px solid var(--primary-blue); padding-left: 15px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>STAR04 <span>ENT</span></h1>
+        <p>Elite Events & Professional Choreography</p>
+    </div>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="openTab(event, 'company')">Company</button>
+        <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
+        <button class="tab-btn" onclick="openTab(event, 'booking')">Book Now</button>
+        <button class="tab-btn" onclick="openTab(event, 'payments')">Payments</button>
+    </div>
+
+    <div id="company" class="content-section active">
+        <div class="card">
+            <h3>Executive Directory</h3>
+            <div class="contact-box">
+                <strong>MANAGING DIRECTOR</strong><br>
+                <span style="font-size: 18px; color: var(--primary-blue);">Kimo Sami</span><br>
+                <span style="font-weight: bold;">+263 778 773 337</span>
+            </div>
+            <div class="contact-box" style="border-color: var(--accent-gold);">
+                <strong>DECOR & CATERING LEAD</strong><br>
+                <span style="font-size: 18px; color: var(--primary-blue);">Events Assistant</span><br>
+                <span style="font-weight: bold;">+263 718 403 634</span>
+            </div>
+            <p style="font-size: 13px; color: #475569;">Star04 Entertainment is a premier event management firm specializing in High-Energy Choreography and Professional MC Services.</p>
+        </div>
+    </div>
+
+    <div id="services" class="content-section">
+        <div class="card">
+            <div class="pkg-header">
+                <div>
+                    <h3 class="pkg-title">Bronze Package</h3>
+                    <small>ESSENTIAL WEDDING MC</small>
+                </div>
+                <div class="pkg-price">$150</div>
+            </div>
+            <ul class="pkg-list">
+                <li>Professional MC (Up to 5 Hours)</li>
+                <li>Standard Program Scripting & Consultation</li>
+                <li>Reception Coordination & Crowd Control</li>
+                <li>Star04 Signature "Grand Entry" Intro</li>
+            </ul>
+        </div>
+
+        <div class="card" style="border: 2px solid var(--primary-blue);">
+            <div class="pkg-header">
+                <div>
+                    <h3 class="pkg-title">Silver Package</h3>
+                    <small style="background: var(--primary-blue); color: white; padding: 2px 5px; border-radius: 4px;">MOST POPULAR</small>
+                </div>
+                <div class="pkg-price">$200</div>
+            </div>
+            <ul class="pkg-list">
+                <li>Full Day MC Services (No Time Limit)</li>
+                <li>High-Definition PA Sound System Included</li>
+                <li>Professional Wedding Stepping Lesson</li>
+                <li>Wireless Mics for Speeches & Vows</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Other Service Rates</h3>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0;">
+                <span>Marooro / Lobola</span>
+                <strong>$100</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0;">
+                <span>Memorial / Funeral</span>
+                <strong>$100</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                <span>Photography & Video</span>
+                <strong style="color: var(--success-green);">QUOTE</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="booking" class="content-section">
+        <div class="card">
+            <h3 style="text-align: center; color: var(--primary-blue);">Reserve Kimo Sami</h3>
+            
+            <label>Choose Your Package</label>
+            <select id="book_pkg">
+                <option>Bronze MC - $150</option>
+                <option>Silver (MC + Sound) - $200</option>
+                <option>Gold (MC + Dance Show) - $250</option>
+                <option>Lobola / Funeral - $100</option>
+            </select>
+
+            <label>Event Date</label>
+            <input type="date" id="book_date">
+
+            <label>Guest Count</label>
+            <input type="number" placeholder="e.g. 150">
+
+            <label>Payment Preference</label>
+            <select>
+                <option>Innbucks</option>
+                <option>USD Cash</option>
+                <option>EcoCash</option>
+            </select>
+
+            <button class="btn-green" onclick="alert('Proceeding to WhatsApp with your details...')">PROCEED TO WHATSAPP</button>
+            <p style="text-align: center; font-size: 10px; color: #64748b; margin-top: 15px;">50% DEPOSIT REQUIRED TO SECURE DATE</p>
+        </div>
+    </div>
+
+    <div id="payments" class="content-section">
+        <div class="toggle-box">
+            <div class="toggle-header" onclick="toggle('pay1')">💳 HOW TO PAY <span>▼</span></div>
+            <div class="toggle-content" id="pay1">
+                <p><strong>USD Cash:</strong> Pay at our office.</p>
+                <p><strong>InnBucks:</strong> 0778 773 337</p>
+                <hr>
+                <p style="color: #d946ef; font-weight: bold; font-size: 12px;">Note: 50% deposit required for all bookings to lock your date.</p>
+            </div>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-header" onclick="toggle('rules')">📜 BOOKING RULES & BENEFITS <span>▼</span></div>
+            <div class="toggle-content" id="rules">
+                <ul class="pkg-list">
+                    <li>Deposits are non-refundable within 14 days of event.</li>
+                    <li>Balance must be cleared on or before event day.</li>
+                    <li>Includes free wedding stepping lesson for the couple.</li>
+                    <li>Professional program scripting included for all MC bookings.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("content-section");
+            for (i = 0; i < content.length; i++) { content[i].style.display = "none"; }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function toggle(id) {
+            var x = document.getElementById(id);
+            x.style.display = (x.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+      </html>
+      
