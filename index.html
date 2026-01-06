@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR04 ENT | Since 2014</title>
+    <style>
+        :root { --navy: #001a33; --gold: #c5a021; --white: #ffffff; --grey: #f1f3f5; --green: #27ae60; }
+        body { background-color: var(--grey); font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; color: var(--navy); line-height: 1.6; }
+        
+        /* Corporate Header */
+        .header { background: var(--navy); color: white; padding: 70px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        .header h1 { margin: 0; font-style: italic; font-weight: 900; letter-spacing: 3px; font-size: 36px; }
+        .header p { color: var(--gold); margin-top: 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .est { font-size: 10px; opacity: 0.7; margin-top: 5px; display: block; }
+
+        .container { max-width: 500px; margin: -40px auto 60px; padding: 0 15px; }
+
+        /* Accordion Styling */
+        .accordion { background: white; border-radius: 18px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .acc-header { padding: 25px; font-weight: 800; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px; background: white; transition: 0.3s; }
+        .acc-header:hover { background: #fafafa; }
+        .acc-content { display: none; padding: 0 25px 25px; background: white; border-top: 1px solid #f5f5f5; text-align: left; animation: slideDown 0.3s ease-out; }
+        .show { display: block; }
+
+        /* Staff & Package Details */
+        .staff-profile { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .staff-info h4 { margin: 0; color: var(--navy); font-size: 18px; }
+        .staff-info p { margin: 2px 0; font-size: 13px; color: var(--gold); font-weight: bold; }
+
+        .pkg-detail { margin-bottom: 20px; background: #fdfdfd; padding: 15px; border-radius: 10px; border-left: 4px solid var(--gold); }
+        .pkg-detail h5 { margin: 0 0 5px 0; font-size: 16px; color: var(--navy); }
+        .pkg-detail p { margin: 0; font-size: 13px; color: #666; }
+
+        /* Buttons */
+        .btn { display: block; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 14px; margin-top: 15px; transition: 0.3s; }
+        .btn-wa { background: var(--navy); color: white; }
+        .btn-pay { background: var(--green); color: white; border: none; }
+        
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>STAR04 ENT</h1>
+        <p>A Classic Event Needs a Professional MC</p>
+        <span class="est">ESTABLISHED 2014 | 12 YEARS OF EXCELLENCE</span>
+    </div>
+
+    <div class="container">
+
+        <div class="accordion">
+            <div class="acc-header" onclick="toggle('history')">OUR STORY (SINCE 2014) <span>+</span></div>
+            <div id="history" class="acc-content">
+                <p style="font-size: 14px; color: #555;">Founded in 2014, Star04 Entertainment has spent over a decade perfecting the art of event choreography and master of ceremonies. We started with a vision to bring high-end energy to local events and have since grown into a full-service executive agency.</p>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-header" onclick="toggle('staff')">EXECUTIVE STAFF <span>+</span></div>
+            <div id="staff" class="acc-content">
+                <div class="staff-profile">
+                    <div class="staff-info">
+                        <h4>Kimo Sami</h4>
+                        <p>Managing Director / Lead MC</p>
+                    </div>
+                </div>
+                <div class="staff-profile">
+                    <div class="staff-info">
+                        <h4>Lincoln</h4>
+                        <p>Technical Director (Media & Sound)</p>
+                    </div>
+                </div>
+                <div class="staff-profile">
+                    <div class="staff-info">
+                        <h4>Assistant Team</h4>
+                        <p>Events, Decor & Catering Logistics</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/263771415082" class="btn btn-wa">CONTACT OFFICE</a>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-header" onclick="toggle('pkgs')">MC PACKAGES EXPLAINED <span>+</span></div>
+            <div id="pkgs" class="acc-content">
+                <div class="pkg-detail">
+                    <h5>Bronze Package — $150</h5>
+                    <p>Perfect for birthdays and small parties. Includes 4 hours of professional MCing and basic event flow coordination.</p>
+                </div>
+                <div class="pkg-detail">
+                    <h5>Silver Package — $200</h5>
+                    <p>Our most popular wedding package. Includes full ceremony & reception coverage, choreography assistance, and 6 hours of MCing.</p>
+                </div>
+                <div class="pkg-detail">
+                    <h5>Gold Package — $250</h5>
+                    <p>The VIP experience. Unlimited time, full event planning consultation, specialized choreography, and executive transport coordination.</p>
+                </div>
+                <a href="https://wa.me/263771415082?text=I%20want%20to%20book%20a%20package." class="btn btn-wa" style="background:var(--gold)">BOOK NOW</a>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-header" onclick="toggle('media')">PHOTOGRAPHY & VIDEO <span>+</span></div>
+            <div id="media" class="acc-content">
+                <p style="font-size: 13px; color: #666;">We provide high-definition photography and cinematic video. Our media team ensures every moment of your event is captured with professional quality.</p>
+                <div class="item-row" style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                    <span>Photo Only</span><strong>$100</strong>
+                </div>
+                <div class="item-row" style="display:flex; justify-content:space-between; padding: 10px 0;">
+                    <span>Full Media Combo</span><strong>$220</strong>
+                </div>
+                <a href="https://wa.me/263718403634" class="btn btn-wa">INQUIRE MEDIA</a>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-header" onclick="toggle('pay')" style="color: var(--green);">SECURE PAYMENT CENTER 💳<span>+</span></div>
+            <div id="pay" class="acc-content">
+                <p style="font-size: 13px; color: #666;">Confirm your booking via EcoCash, InnBucks, or Transfer. 50% deposit required to secure your date.</p>
+                <a href="https://wa.me/263771415082?text=Send%20payment%20details" class="btn btn-pay">GET PAYMENT LINKS</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggle(id) {
+            var x = document.getElementById(id);
+            x.classList.toggle("show");
+        }
+    </script>
+
+    <div style="text-align: center; color: #aaa; font-size: 11px; padding-bottom: 40px;">
+        © 2026 STAR04 ENTERTAINMENT PORTAL. ALL RIGHTS RESERVED.
+    </div>
+</body>
+</html>
