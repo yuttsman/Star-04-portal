@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR04 ENT | Executive Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #000c1a; --gold: #d4af37; --white: #ffffff; --bg: #f2f4f7; }
+        body { background: var(--navy); font-family: 'Montserrat', sans-serif; margin: 0; color: var(--navy); }
+
+        /* FRONT PAGE: THE EXECUTIVE SPLASH */
+        #splash { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background: linear-gradient(rgba(0,12,26,0.75), rgba(0,12,26,0.9)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80');
+            background-size: cover; background-position: center; text-align: center; color: white;
+        }
+        #splash h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-style: italic; margin: 0; color: var(--gold); }
+        .md-tag { font-size: 12px; letter-spacing: 5px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+        .md-name-splash { font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; border-top: 1px solid var(--gold); padding-top: 10px; }
+        .enter-btn { background: var(--gold); color: var(--navy); padding: 20px 60px; border-radius: 50px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
+
+        /* DASHBOARD */
+        #dashboard { display: none; background: var(--bg); min-height: 100vh; animation: fadeIn 0.8s; }
+        .header { background: var(--navy); color: white; padding: 50px 20px; text-align: center; border-bottom: 6px solid var(--gold); }
+        .container { max-width: 480px; margin: -35px auto 0; padding: 0 15px 80px; }
+
+        /* SERVICE GRID - THE "ALL" LOOK */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+        .grid-item { background: white; padding: 25px 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #eee; cursor: pointer; transition: 0.3s; }
+        .grid-item i { font-size: 28px; color: var(--gold); margin-bottom: 10px; display: block; }
+        .grid-item h3 { margin: 0; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+
+        /* DETAILED SERVICE CARDS */
+        .svc-card { display: none; background: white; border-radius: 25px; padding: 30px; margin-bottom: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-left: 6px solid var(--gold); animation: slideUp 0.4s; }
+        .svc-card h2 { font-family: 'Playfair Display', serif; font-size: 24px; margin-top: 0; }
+        .price-label { background: #eefaf2; color: #2ecc71; padding: 6px 12px; border-radius: 8px; font-weight: 900; font-size: 13px; display: inline-block; margin-bottom: 15px; }
+        
+        input, select, textarea { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #ddd; font-weight: 600; font-family: 'Montserrat', sans-serif; box-sizing: border-box; }
+        .btn-wa-order { background: var(--navy); color: white; width: 100%; padding: 18px; border-radius: 15px; font-weight: 900; text-transform: uppercase; border: none; cursor: pointer; font-size: 14px; }
+
+        /* LEADERSHIP CONTACTS */
+        .directors-box { background: white; border-radius: 25px; padding: 25px; margin-top: 30px; border: 1px solid #eee; }
+        .dir-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f8f8f8; }
+        .dir-info b { display: block; font-size: 14px; color: var(--navy); }
+        .dir-info span { font-size: 10px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+        .dir-call { color: var(--navy); font-size: 18px; }
+
+        .close-btn { float: right; color: #ccc; font-weight: 900; cursor: pointer; font-size: 12px; }
+        .hidden { display: none !important; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="md-tag">MANAGING DIRECTOR</div>
+        <div class="md-name-splash">Kimo Sami</div>
+        <h1>STAR04 ENT</h1>
+        <p style="letter-spacing: 5px; font-size: 10px; margin-top: 15px; font-weight: 300;">ESTABLISHED 2014</p>
+        <button class="enter-btn" onclick="openPortal()">Access Executive Portal</button>
+    </div>
+
+    <div id="dashboard">
+        <div class="header">
+            <h2 style="font-family:'Playfair Display'; font-style: italic; margin:0; font-size: 28px;">Star04 Entertainment</h2>
+            <p style="color:var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 3px; margin-top: 8px;">THE ULTIMATE EVENT EXPERIENCE</p>
+        </div>
+
+        <div class="container">
+            
+            <div class="grid">
+                <div class="grid-item" onclick="showSvc('mc-svc')"><i class="fa-solid fa-microphone"></i><h3>MC Packages</h3></div>
+                <div class="grid-item" onclick="showSvc('dance-svc')"><i class="fa-solid fa-person-rays"></i><h3>Dance Moves</h3></div>
+                <div class="grid-item" onclick="showSvc('photo-svc')"><i class="fa-solid fa-camera-retro"></i><h3>Photography</h3></div>
+                <div class="grid-item" onclick="showSvc('prod-svc')"><i class="fa-solid fa-bolt"></i><h3>PA & Lighting</h3></div>
+            </div>
+
+            <div id="mc-svc" class="svc-card">
+                <span class="close-btn" onclick="hideSvc()">X</span>
+                <h2>Master of Ceremonies</h2>
+                <div class="price-label">Starting from $150</div>
+                <p style="font-size: 12px; color: #555;">Kimo Sami provides executive crowd control and professional program flow for your wedding or corporate event.</p>
+                <input type="text" id="m-name" placeholder="Client Name">
+                <input type="date" id="m-date">
+                <button class="btn-wa-order" onclick="book('MC Service', 'm-name', 'm-date', '0778773337')">Book MD Kimo Sami</button>
+            </div>
+
+            <div id="dance-svc" class="svc-card">
+                <span class="close-btn" onclick="hideSvc()">X</span>
+                <h2>Executive Dance Coaching</h2>
+                <div class="price-label">Affordable Group Rates</div>
+                <p style="font-size: 12px; color: #555;">Choreography for bridal parties and teams. We teach the moves that make your entrance legendary.</p>
+                <input type="text" id="d-name" placeholder="Group/Client Name">
+                <button class="btn-wa-order" onclick="book('Dance Moves', 'd-name', 'N/A', '0778773337')">Inquire About Dance</button>
+            </div>
+
+            <div id="photo-svc" class="svc-card">
+                <span class="close-btn" onclick="hideSvc()">X</span>
+                <h2>Lincoln Media Photo</h2>
+                <div class="price-label">Packages from $100</div>
+                <p style="font-size: 12px; color: #555;">Professional cinematic coverage. Capture every detail of your special day with Lincoln Media.</p>
+                <input type="text" id="p-name" placeholder="Client Name">
+                <button class="btn-wa-order" onclick="book('Photography', 'p-name', 'N/A', '0718403634')">Contact Director Lincoln</button>
+            </div>
+
+            <div id="prod-svc" class="svc-card">
+                <span class="close-btn" onclick="hideSvc()">X</span>
+                <h2>Sound & Production</h2>
+                <div class="price-label">PA System $80 | Lighting $50</div>
+                <p style="font-size: 12px; color: #555;">Crystal clear audio and ambient LED lighting to transform your venue.</p>
+                <button class="btn-wa-order" onclick="window.open('https://wa.me/263778773337?text=Inquiry: PA and Lighting Hire')">Check Availability</button>
+            </div>
+
+            <div class="directors-box">
+                <h3 style="font-size: 12px; text-transform: uppercase; margin-top: 0; letter-spacing: 1px;">Executive Directory</h3>
+                <div class="dir-row">
+                    <div class="dir-info"><b>Kimo Sami</b><span>Managing Director</span></div>
+                    <a href="tel:0778773337" class="dir-call"><i class="fa-solid fa-phone-volume"></i></a>
+                </div>
+                <div class="dir-row" style="border:none;">
+                    <div class="dir-info"><b>Lincoln</b><span>Media Director</span></div>
+                    <a href="tel:0718403634" class="dir-call"><i class="fa-solid fa-phone-volume"></i></a>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 10px; color: #bbb; margin-top: 40px;">© 2026 STAR04 ENTERTAINMENT. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+    <script>
+        function openPortal() {
+            document.getElementById('splash').classList.add('hidden');
+            document.getElementById('dashboard').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+        function showSvc(id) {
+            hideSvc();
+            document.getElementById(id).style.display = 'block';
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        function hideSvc() {
+            document.querySelectorAll('.svc-card').forEach(c => c.style.display = 'none');
+        }
+        function book(svc, nid, did, num) {
+            const name = document.getElementById(nid).value;
+            const date = document.getElementById(did) ? document.getElementById(did).value : 'Consultation';
+            if(!name) { alert("Please enter Name"); return; }
+            const msg = `*STAR04 EXECUTIVE BOOKING*%0A%0A*Service:* ${svc}%0A*Client:* ${name}%0A*Date:* ${date}`;
+            window.open(`https://wa.me/263${num.substring(1)}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
