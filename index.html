@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR04 ENT | Executive Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #000c1a; --gold: #d4af37; --white: #ffffff; --bg: #f2f4f7; }
+        body { background: var(--navy); font-family: 'Montserrat', sans-serif; margin: 0; color: var(--navy); overflow-x: hidden; }
+
+        /* SPLASH PAGE */
+        #splash { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background: linear-gradient(rgba(0,12,26,0.85), rgba(0,12,26,0.95)), url('IMG-20260103-WA0050.jpg');
+            background-size: cover; background-position: center; text-align: center; color: white;
+        }
+        #splash h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-style: italic; margin: 0; color: var(--gold); }
+        .md-name-splash { font-size: 18px; font-weight: 900; text-transform: uppercase; margin: 15px 0 30px; border-top: 1px solid var(--gold); padding-top: 10px; letter-spacing: 2px; }
+        .enter-btn { background: var(--gold); color: var(--navy); padding: 20px 60px; border-radius: 50px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; }
+
+        /* DASHBOARD */
+        #dashboard { display: none; background: var(--bg); min-height: 100vh; animation: fadeIn 0.8s; }
+        .header { background: var(--navy); color: white; padding: 50px 20px; text-align: center; border-bottom: 6px solid var(--gold); }
+        .container { max-width: 480px; margin: -35px auto 0; padding: 0 15px 80px; }
+
+        /* SERVICE GRID */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+        .grid-item { background: white; padding: 25px 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #eee; cursor: pointer; }
+        .grid-item i { font-size: 28px; color: var(--gold); margin-bottom: 10px; display: block; }
+        .grid-item h3 { margin: 0; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+
+        /* CARDS */
+        .svc-card { display: none; background: white; border-radius: 25px; padding: 30px; margin-bottom: 20px; border-left: 6px solid var(--gold); animation: slideUp 0.4s; }
+        .price-label { background: #eefaf2; color: #2ecc71; padding: 6px 12px; border-radius: 8px; font-weight: 900; font-size: 12px; display: inline-block; margin-bottom: 10px; }
+        
+        input { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #ddd; font-weight: 600; box-sizing: border-box; }
+        .btn-wa-order { background: var(--navy); color: white; width: 100%; padding: 18px; border-radius: 15px; font-weight: 900; text-transform: uppercase; border: none; cursor: pointer; }
+
+        /* AUTOMATED SWIPE GALLERY */
+        .slider-box { background: white; border-radius: 25px; padding: 15px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        #slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; scroll-behavior: smooth; border-radius: 15px; }
+        #slider img { scroll-snap-align: center; min-width: 100%; height: 300px; object-fit: cover; border-radius: 15px; }
+        #slider::-webkit-scrollbar { display: none; }
+
+        /* CONTACTS */
+        .directors-box { background: white; border-radius: 25px; padding: 25px; margin-top: 30px; }
+        .dir-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f8f8f8; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <p style="letter-spacing: 5px; font-size: 10px;">SINCE 2014</p>
+        <h1>STAR04 ENT</h1>
+        <div class="md-name-splash">MD KIMO SAMI</div>
+        <button class="enter-btn" onclick="openPortal()">Enter Executive Portal</button>
+    </div>
+
+    <div id="dashboard">
+        <div class="header">
+            <h2 style="font-family:'Playfair Display'; font-style: italic; margin:0; font-size: 28px;">Star04 Entertainment</h2>
+            <p style="color:var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 3px; margin-top: 8px;">HARARE | BULAWAYO | VIC FALLS</p>
+        </div>
+
+        <div class="container">
+            <div class="grid">
+                <div class="grid-item" onclick="showSvc('mc-svc')"><i class="fa-solid fa-microphone-lines"></i><h3>MC Packages</h3></div>
+                <div class="grid-item" onclick="showSvc('dance-svc')"><i class="fa-solid fa-person-rays"></i><h3>Choreography</h3></div>
+                <div class="grid-item" onclick="showSvc('photo-svc')"><i class="fa-solid fa-camera-retro"></i><h3>Photography</h3></div>
+                <div class="grid-item" onclick="showSvc('pay-svc')"><i class="fa-solid fa-wallet"></i><h3>Payment</h3></div>
+            </div>
+
+            <div class="slider-box">
+                <div id="slider">
+                    <img src="IMG-20260103-WA0052.jpg"> <img src="IMG-20260103-WA0049.jpg"> <img src="IMG-20260103-WA0050.jpg"> <img src="IMG-20260103-WA0051.jpg"> </div>
+                <p style="text-align: center; font-size: 9px; color: #888; margin-top: 10px; letter-spacing: 2px;">SWIPE TO VIEW PORTFOLIO</p>
+            </div>
+
+            <div id="mc-svc" class="svc-card">
+                <h2>Wedding MC</h2>
+                <div class="price-label">Bronze: $150 | Silver: $200 | Gold: $250</div>
+                <p style="font-size: 12px;">Standard Event Packages start from $100.</p>
+                <input type="text" id="m-n" placeholder="Your Name">
+                <button class="btn-wa-order" onclick="book('MC Service', 'm-n', '0778773337')">Check Availability</button>
+            </div>
+
+            <div id="dance-svc" class="svc-card">
+                <h2>Choreography</h2>
+                <div class="price-label">Professional Coaching</div>
+                <p style="font-size: 12px;">Special surprises for bookings over $200!</p>
+                <button class="btn-wa-order" onclick="window.open('https://wa.me/263778773337?text=Inquiry: Dance Class')">Inquire Now</button>
+            </div>
+
+            <div id="photo-svc" class="svc-card">
+                <h2>Lincoln Media</h2>
+                <div class="price-label">Starts at $100</div>
+                <button class="btn-wa-order" onclick="window.open('https://wa.me/263718403634?text=Inquiry: Photography')">Book Lincoln</button>
+            </div>
+
+            <div id="pay-svc" class="svc-card">
+                <h2>Payment Terms</h2>
+                <p style="font-size: 13px;"><b>50% Deposit</b> to lock your date.</p>
+                <p style="font-size: 11px;">EcoCash • InnBucks • Mukuru • Cash</p>
+                <button class="btn-wa-order" onclick="window.open('https://wa.me/263778773337?text=Requesting Payment Info')">Get Details</button>
+            </div>
+
+            <div class="directors-box">
+                <div class="dir-row">
+                    <div><b>Kimo Sami</b><br><small>Managing Director</small></div>
+                    <a href="tel:0778773337" style="color:var(--navy)"><i class="fa-solid fa-phone"></i></a>
+                </div>
+                <div class="dir-row" style="border:none;">
+                    <div><b>Lincoln</b><br><small>Media Director</small></div>
+                    <a href="tel:0718403634" style="color:var(--navy)"><i class="fa-solid fa-phone"></i></a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 10px; color: #bbb; margin-top: 40px;">© 2026 STAR04 ENTERTAINMENT</p>
+        </div>
+    </div>
+
+    <script>
+        function openPortal() { document.getElementById('splash').style.display = 'none'; document.getElementById('dashboard').style.display = 'block'; window.scrollTo(0,0); }
+        function showSvc(id) { document.querySelectorAll('.svc-card').forEach(c => c.style.display = 'none'); document.getElementById(id).style.display = 'block'; document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+        function book(svc, nid, num) {
+            const name = document.getElementById(nid).value;
+            if(!name) { alert("Please enter your name"); return; }
+            window.open(`https://wa.me/263${num.substring(1)}?text=*STAR04 BOOKING*%0A*Service:* ${svc}%0A*Client:* ${name}`, '_blank');
+        }
+    </script>
+</body>
+</html>
